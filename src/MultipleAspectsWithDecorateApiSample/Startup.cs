@@ -44,8 +44,6 @@ namespace MultipleAspectsWithDecorateApiSample
                 });
             });
 
-            //services.AddSingleton(new ProxyGenerator());
-            //services.AddScoped<IInterceptor, LoggingAspect>();
             services.AddScoped<IAccountService, AccountService>();
             services.Decorate<IAccountService, AccountServiceLogging>();
             services.Decorate<IAccountService, AccountServiceValidation>();
