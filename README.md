@@ -45,6 +45,10 @@ public class LoggingAspect : IInterceptor
 }
 ```
 
+Github Castle.Core:
+
+https://github.com/castleproject/Core
+
 ## Múltiplos Aspectos utilizando Decorate do Scrutor:
 
 Injeção de dependência utilizando o Decorate:
@@ -141,3 +145,6 @@ public class AccountServiceValidation : IAccountService
     }
 }
 ```
+Github Scrutor:
+
+https://github.com/khellang/Scrutor
