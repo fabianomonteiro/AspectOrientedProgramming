@@ -2,6 +2,52 @@
 
 ## Aspecto de Logging utilizando DynamicProxy do Castle.Core:
 
+ServicesExtensions utilizando Castle.Core:
+
+```csharp
+public static class ServicesExtensions
+{
+    public static void AddProxiedScoped<TInterface, TImplementation>(this IServiceCollection services)
+        where TInterface : class
+        where TImplementation : class, TInterface
+    {
+        services.AddScoped<TImplementation>();
+        services.AddScoped(typeof(TInterface), serviceProvider =>
+        {
+            var proxyGenerator = serviceProvider.GetRequiredService<ProxyGenerator>();
+            var actual = serviceProvider.GetRequiredService<TImplementation>();
+            var interceptors = serviceProvider.GetServices<IInterceptor>().ToArray();
+            return proxyGenerator.CreateInterfaceProxyWithTarget(typeof(TInterface), actual, interceptors);
+        });
+    }
+}
+```
+
+Injeção de dependência utilizando o Castle.Core:
+
+```csharp
+services.AddSingleton(new ProxyGenerator());
+services.AddScoped<IInterceptor, LoggingAspect>();
+services.AddProxiedScoped<IAccountService, AccountService>();
+services.AddProxiedScoped<IAccountRepository, AccountRepository>();
+```
+
+Aspecto de Logging utilizando Castle.Core:
+
+```csharp
+public class LoggingAspect : IInterceptor
+{
+    public void Intercept(IInvocation invocation)
+    {
+        Console.WriteLine($"Calling method {invocation.TargetType}.{invocation.Method.Name}.");
+        invocation.Proceed();
+    }
+}
+```
+
+Github Castle.Core:
+
+https://github.com/castleproject/Core
 
 ## Múltiplos Aspectos utilizando Decorate do Scrutor:
 
@@ -99,3 +145,6 @@ public class AccountServiceValidation : IAccountService
     }
 }
 ```
+Github Scrutor:
+
+https://github.com/khellang/Scrutor
