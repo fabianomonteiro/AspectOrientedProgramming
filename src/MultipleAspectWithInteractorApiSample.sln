@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultipleAspectWithInteractorApiSample", "MultipleAspectWithInteractorApiSample\MultipleAspectWithInteractorApiSample.csproj", "{17D1DA0B-2390-4277-895D-B0AA135FE634}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{17D1DA0B-2390-4277-895D-B0AA135FE634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D1DA0B-2390-4277-895D-B0AA135FE634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D1DA0B-2390-4277-895D-B0AA135FE634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D1DA0B-2390-4277-895D-B0AA135FE634}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92728D96-0CC5-4EF4-B3A7-C5E5A0E40B3D}
+	EndGlobalSection
+EndGlobal
