@@ -1,5 +1,19 @@
 # Aspect Oriented Programming
 
+## Múltiplos Aspectos utilizando Interactor do FluentInteract:
+
+Registrando Aspectos no Startup:
+
+```csharp
+AspectWeaver.Instance.AddAspect<AuthorizingAspect>();
+AspectWeaver.Instance.AddAspect<CachingAspect>();
+AspectWeaver.Instance.AddAspect<LoggingAspect>();
+```
+
+Github FluentInteract:
+
+https://github.com/fabianomonteiro/FluentInteract
+
 ## Aspecto de Logging utilizando DynamicProxy do Castle.Core:
 
 ServicesExtensions utilizando Castle.Core:
