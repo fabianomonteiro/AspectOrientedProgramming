@@ -1,6 +1,6 @@
 # Aspect Oriented Programming
 
-## Múltiplos Aspectos utilizando Interactor do FluentInteract:
+## Múltiplos Aspectos especializados utilizando Interactor do FluentInteract:
 
 Registrando Aspectos via injeção de dependência:
 
