@@ -8,7 +8,7 @@ namespace MultipleAspectWithInteractorApiSample.UseCases
     {
         private readonly IAccountRepository _accountRepository;
 
-        public DisableAccountUseCase(IAccountRepository accountRepository)
+        public DisableAccountUseCase(IAccountRepository accountRepository, IAspectWeaver aspectWeaver) : base(aspectWeaver)
         {
             _accountRepository = accountRepository;
         }

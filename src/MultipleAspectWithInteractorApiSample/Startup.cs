@@ -48,6 +48,29 @@ namespace LoggingAspectWithProxyApiSample
                 });
             });
 
+            // Singleton Without Dependency Injection
+            //AspectWeaver.Singleton = new AspectWeaver(
+            //    new AuthorizingAspect(),
+            //    new CachingAspect(),
+            //    new CanExecutingAspect(),
+            //    new ChangingExecuteAspect(),
+            //    new LoggingAspect(),
+            //    new ValidatingAspect());
+
+            services.AddSingleton<IAspectWeaver, AspectWeaver>((serviceProvider) =>
+            {
+                var aspectWeaver = new AspectWeaver();
+
+                aspectWeaver.AddAspect<AuthorizingAspect>();
+                aspectWeaver.AddAspect<CachingAspect>();
+                aspectWeaver.AddAspect<CanExecutingAspect>();
+                aspectWeaver.AddAspect<ChangingExecuteAspect>();
+                aspectWeaver.AddAspect<LoggingAspect>();
+                aspectWeaver.AddAspect<ValidatingAspect>();
+
+                return aspectWeaver;
+            });
+
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IDisableAccountUseCase, DisableAccountUseCase>();
@@ -58,10 +81,6 @@ namespace LoggingAspectWithProxyApiSample
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            AspectWeaver.Instance.AddAspect<AuthorizingAspect>();
-            AspectWeaver.Instance.AddAspect<CachingAspect>();
-            AspectWeaver.Instance.AddAspect<LoggingAspect>();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

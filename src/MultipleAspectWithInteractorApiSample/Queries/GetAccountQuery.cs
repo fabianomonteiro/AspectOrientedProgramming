@@ -7,6 +7,8 @@ namespace MultipleAspectWithInteractorApiSample.Queries
 {
     public class GetAccountQuery : Interactor<int, Account>, IGetAccountQuery
     {
+        public GetAccountQuery(IAspectWeaver aspectWeaver) : base(aspectWeaver) { }
+
         protected async override Task<Account> ImplementExecute(int input)
         {
             return await Task.FromResult(new Account

@@ -2,16 +2,16 @@
 using FluentInteract.Aspects;
 using System.Threading.Tasks;
 
-namespace LoggingAspectWithProxyApiSample.Aspects
+namespace MultipleAspectWithInteractorApiSample.Aspects
 {
-    public class AuthorizingAspect : IAuthorizingAspect
+    public class CanExecutingAspect : ICanExecutingAspect
     {
         public bool IsMatch(IInteractor interactor, object input)
         {
             return true;
         }
 
-        public Task<bool> Authorize(IInteractor interactor, object input)
+        public Task<bool> CanExecute(IInteractor interactor, object input)
         {
             return Task.FromResult(true);
         }

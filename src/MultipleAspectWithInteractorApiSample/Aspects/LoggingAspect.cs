@@ -1,6 +1,7 @@
 ﻿using FluentInteract;
 using FluentInteract.Aspects;
 using System;
+using System.Threading.Tasks;
 
 namespace LoggingAspectWithProxyApiSample.Aspects
 {
@@ -11,19 +12,25 @@ namespace LoggingAspectWithProxyApiSample.Aspects
             return true;
         }
 
-        public void LogStartExecute(IInteractor interactor, object input, ICallerInstance callerInstance, string memberName, string sourceFilePath, int sourceLineNumber)
+        public Task LogStartExecute(DateTime dateTime, IInteractor interactor, object input, ICallerInstance callerInstance, string memberName, string sourceFilePath, int sourceLineNumber)
         {
             Console.WriteLine("Start Execute");
+
+            return Task.CompletedTask;
         }
 
-        public void LogEndExecute(IInteractor interactor, TimeSpan timeSpanExecution, bool executeFromAspect, IAspect aspectExecutedInstance)
+        public Task LogEndExecute(DateTime dateTime, IInteractor interactor, TimeSpan elapsed, bool executeFromAspect, IAspect aspectExecutedInstance)
         {
             Console.WriteLine("End Execute");
+
+            return Task.CompletedTask;
         }
 
-        public void LogExceptionExecute(IInteractor interactor, Exception exception)
+        public Task LogExceptionExecute(DateTime dateTime, IInteractor interactor, object input, Exception exception, ICallerInstance callerInstance, string memberName, string sourceFilePath, int sourceLineNumber)
         {
             Console.WriteLine("Exception Execute");
+
+            return Task.CompletedTask;
         }
     }
 }
